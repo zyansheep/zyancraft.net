@@ -1,0 +1,211 @@
+//compileExpanded: style.css
+
+$month-px: 60px; //Distance between bars
+$point-px: 17px; //Size of points on top bar
+
+.noselect {
+  user-select: none;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+}
+
+*,
+*:before,
+*:after { box-sizing: border-box; }
+
+//disable scrollbars
+::-webkit-scrollbar { width: 1px; height: 1px; }
+::-webkit-scrollbar-button { width: 1px; height: 1px; }
+
+html {
+  font-size: 16px;
+  overflow-x: scroll;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  overflow-y: hidden;
+}
+
+body {
+  white-space: nowrap; //allow scrolling sideways!
+  font-size: 1em;
+  background-color: #363732;
+  margin: 0px;
+  overflow-y: hidden;
+  height: auto;
+}
+
+$color-html: #e44d26;
+$color-css: #3074b1;
+
+.bg-html { background-color: $color-html; }
+.bg-css { background-color: $color-css; }
+
+.timeline {
+  display: block;
+  height: auto;
+  width: auto;
+  padding: 0;
+  transform-origin: left top;
+  
+}
+.buffer {
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.segment {
+  display: inline-block;
+  position: relative;
+  margin: 0px -10.6px; //overlap loops
+  padding: 35px 0px;
+  
+  height: 700px;
+  z-index: 1;
+  
+  background-image: var(--background-img);
+  background-size: cover;
+  background-repeat: no-repeat;
+  &:nth-child(n+3) {
+    background-position: 8.5px;
+  }
+  
+  p {
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    color: #fff;
+  }
+  
+  .line {
+    display: inline-block;
+    margin: 7px 1.5px; //1.5*2 = space between dashes
+    background-color: #666;
+    z-index: 1;
+    
+    height: 3px;
+    width: $month-px;
+    
+    transition: background-color 0.4s ease;
+  }
+  .point {
+    display: inline-block;
+    position: relative;
+    width: $point-px;
+    height: $point-px;
+    border-radius: 50%;
+    background-color: transparent;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #666;
+    z-index: 1;
+    
+    transition: border-color 0.4s ease;
+  }
+  .dot {
+    display: block;
+    position: absolute;
+    left: var(--dot-x);
+    top: var(--dot-y);
+  }
+  
+  transition: opacity 0.4s linear;
+  opacity: 0;
+  
+  &.display {
+    opacity: 1;
+    .line {
+      background-color: var(--hover-color);
+    }
+    .point{
+      border-color: var(--hover-color);
+    }
+  }
+}
+
+.dates {
+  position: absolute;
+  padding: 0;
+  width: 100%;
+  height: 100px;
+  
+  div {
+    position: absolute;
+    display: inline-block;
+    color: #999;
+    font-family: 'Play', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: -44px;
+    top: 12px;
+    bottom: 0;
+    
+    max-width: 100%;
+    
+    &:before {
+      position: absolute;
+      top: -10px;
+      bottom: 0;
+      width: 1px;
+      background: #666;
+      left: 45px;
+    }
+    
+    //Generate time lines
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}){
+        left: ($point-px * $i) + ($month-px * 2) + ($month-px * 10 * ($i - 1) );
+      }
+    }
+  }
+}
+
+.dot {
+  width: 2 * $point-px;
+  height: 2 * $point-px;
+  
+  border-style: solid;
+  border-radius: $point-px;
+  border-width: 3px;
+  border-color: #666;
+  
+  background-color: transparent;
+  z-index: 999;
+  
+  overflow: hidden; //don't have <p> overlap div
+  cursor: pointer;
+  p {
+    position: relative;
+    top: 2.3px;
+    opacity: 0; //Not seeable when bubble is collapsed
+    transition: opacity 0.2s ease;
+    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    color: #fff; 
+    
+    
+    @extend .noselect; //prevent selection
+  }
+  
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: #ed633e;
+    background-color: rgba(0,0,0, 0.5);
+    p {
+      opacity: 1;
+    }
+  }
+}
+

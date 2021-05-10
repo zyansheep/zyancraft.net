@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <title>I was forgotten...</title>
+    <script>
+    var snd = new Audio("zyker_theme.wav");
+    var angry = new Audio("zyker_calm.wav");
+    var met = false;
+
+    function playMusic() {
+        if(!met) {
+            met = true;
+            snd.play();
+            angry.play();
+            document.getElementById("meeter").style.display = "none";
+            document.write('<img id="zyker" src="zyker.png"/>')
+            document.body.style = "background-color: black;";
+            document.title = "eeemememem....e.e.E?E?E?©H?Y#%TB";
+        }
+    }
+
+    function randomizeZyk() {
+        if(met) {
+            var rx = Math.random() * 5;
+            var ry = Math.random() * 10;
+            document.getElementById("zyker").style = "transform: rotate(" + rx + "deg); position: absolute; top:" + ry + "; left:" + rx + "; right:0; bottom:0; margin:auto;";
+
+            if(!snd.isPlaying) {
+                snd.play();
+            }
+
+            if(!angry.isPlaying) {
+                angry.play();
+            }
+        }
+    }
+
+    setInterval(randomizeZyk, 25);
+
+    </script>
+</head>
+<body style="background-color: black;">
+    <button id="meeter" onclick="playMusic()">Meet Zyker...</button>
+    <div id="pic"/>
+</body>

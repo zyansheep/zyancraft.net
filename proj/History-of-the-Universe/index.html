@@ -1,0 +1,101 @@
+<!-- Adapted from CodePen Horizontal Scrolling Timeline https://codepen.io/apparatus/pen/ygKXNr -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="icon" href="favicon.png">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>-->
+    <script src="within-viewport/withinviewport.js" charset="utf-8"></script>
+    <script src="jquery.min.js" charset="utf-8"></script>
+    <script src="within-viewport/jquery.withinviewport.js" charset="utf-8"></script>
+    <script src="info/info.js" charset="utf-8"></script>
+    <script src="index.js" charset="utf-8"></script>
+    <title>Evolution of the Universe</title>
+    <meta name="viewport" content="height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  </head>
+  <body>
+    <div class="timeline">
+      <div class="buffer"></div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #97d700;
+      --background-img: url('backgrounds/1bigbang.jpg');">
+        <p>The Dawn of Time</p>
+        <div class="dot" style="--dot-x:300px;--dot-y:350px" data-page="bigbang"><p>Big Bang Theory</p></div>
+      </div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #4180aa;
+      --background-img: url('backgrounds/2solarsystem.jpg');">
+        <p>Start of the Solar System</p>
+        <div class="dot" style="--dot-x:300px;--dot-y:400px" data-page="solarform"><p>Solar Formation</p></div>
+      </div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #d2225f;
+      --background-img: url('backgrounds/3earthformation.jpg');">
+        <p>Formation of the Earth</p>
+        <div class="dot" style="--dot-x:380px;--dot-y:165px" data-page="planetarydisks"><p>Planetary Disks</p></div>
+        <div class="dot" style="--dot-x:200px;--dot-y:540px" data-page="earlyearth"><p>Early Earth</p></div>
+        <div class="dot" style="--dot-x:470px;--dot-y:550px" data-page="moonform"><p>Moon Formation</p></div>
+      </div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #00b4ac;
+      --background-img: url('backgrounds/4earlylife.jpg')">
+        <p>Before Life</p>
+        <div class="dot" style="--dot-x:390px;--dot-y:490px" data-page="mineralpools"><p>Pools of Life</p></div>
+        <div class="dot" style="--dot-x:330px;--dot-y:220px" data-page="waterorigins"><p>Water on Earth</p></div>
+      </div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #cb2839;
+      --background-img: url('backgrounds/5prokaryotes.jpg')">
+        <p>Basic Life Form</p>
+        <div class="dot" style="--dot-x:330px;--dot-y:220px" data-page="geovents"><p>Geothermal Vents</p></div>
+        <div class="dot" style="--dot-x:420px;--dot-y:570px" data-page="prokaryotes"><p>Prokaryotic Life</p></div>
+      </div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #cb2839;
+      --background-img: url('backgrounds/6complexlife.png')">
+        <p>Complex Life Evolves</p>
+        <div class="dot" style="--dot-x:333px;--dot-y:165px" data-page="eukaryotes"><p>Eukaryotes</p></div>
+        <div class="dot" style="--dot-x:160px;--dot-y:520px" data-page="photosynthesis"><p>Photosynthesis</p></div>
+        <div class="dot" style="--dot-x:400px;--dot-y:420px" data-page="oxygenshift"><p>Atmospheric Shift</p></div>
+      </div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #d2225f;
+      --background-img: url('backgrounds/7multicellular.jpg')">
+        <p>Multicelled Organisms</p>
+        <div class="dot" style="--dot-x:333px;--dot-y:345px" data-page="multicelled"><p>Multicelled Organisms</p></div>
+      </div>
+      <div data-lines="10" class="segment" style="
+      --hover-color: #d2225f;
+      --background-img: url('backgrounds/8modernday.jpg')">
+      <div class="dot" style="--dot-x:340px;--dot-y:160px" data-page="darwinevolution"><p>Darwinian Evolution</p></div>
+      <div class="dot" style="--dot-x:300px;--dot-y:520px" data-page="cambrianboom"><p>Cambrian Explosion</p></div>
+       <p>Modern Day</p>
+      </div>
+    </div>
+    <!--<div class="dates">
+      <div>15BYA</div>
+      <div>10BYA</div>
+      <div>5BYA</div>
+      <div>4BYA</div>
+      <div>3BYA</div>
+      <div>2BYA</div>
+      <div>1BYA</div>
+      <div>300MYA</div>
+    </div>-->
+    
+    <div class="modal">
+      <div class="main">
+        <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="12" height="12"><polygon fill="currentColor" points="96,14 82,0 48,34 14,0 0,14 34,48 0,82 14,96 48,62 82,96 96,82 62,48 "></polygon></svg></button>
+      	<div class="content">
+      		<h1>Main Title</h1>
+          <h2>Sub Title</h2>
+          <img src="" alt="">
+          <p>Oops, The Popup, didn't get populated. There must be a problem with info.js not being read correctly</p>
+          <a target="_blank" href="https://zyancraft.net/home">Source</a>
+      	</div>
+      </div>
+    </div>
+  </body>
+</html>
