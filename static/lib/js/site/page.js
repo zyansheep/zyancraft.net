@@ -1,14 +1,14 @@
 
 function loadPageJS(){
   //Load login attributes
-  var script = document.createElement('script');
+  //var script = document.createElement('script');
   script.src = "/login";
   document.head.appendChild(script);
   
   var backButton = document.createElement('a');
   backButton.id = "backButton";
   backButton.innerHTML = "<- to Zyancraft Home";
-  backButton.href = "/home"
+  backButton.href = "/"
   document.body.appendChild(backButton);
   
   script.onload = function () {
