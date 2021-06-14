@@ -79,7 +79,7 @@ function loadLogin(){
   }
 }
 
-var isSending = false;
+/* var isSending = false;
 $( document ).ready(function() {
   //Load login information
   reload_js('/login', loadLogin);
@@ -116,7 +116,7 @@ $( document ).ready(function() {
       isSending = false;
     });
   });
-});
+}); */
 
 //change html background (to fix scroll)
 /*var scrollPos = $(window).scrollTop(); 
